@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>设置</title>
+		<script src="common/js/mui.min.js"></script>
+		<link href="common/css/mui.min.css" rel="stylesheet" />
+		<link href="common/font/iconfont.css" rel="stylesheet" />
+		<style>
+			html,
+			body,
+			.mui-content {
+				height: 100%;
+				background: #2DC0B8;
+			}
+			.mui-bar {
+				background: #2DC0B8;
+			}
+			.ad-white {
+				color: #fff;
+			}
+			.mui-bar-nav button {
+				background: #2DC0B8;
+				border: 0;
+				margin-top: 6px;
+			}
+			.mui-table-view-cell {
+				background: #2DC0B8;
+			}
+			.mui-table-view-cell {
+				box-sizing: border-box;
+				/*border-bottom: 1px solid #F4F3F4;*/
+			}
+			.mui-table-view-cell:after {
+				/*background: none;*/
+				
+				background: #fff;
+			}
+			.mui-table-view:before {
+				background: none;
+			}
+			.mui-table-view:after {
+				background: none;
+			}
+			.mui-switch {
+				margin: 0;
+				border: 0;
+				height: 31px;
+			}
+			.mui-switch .mui-switch-handle {
+				top: 1px;
+				border: 2px solid #2DC0B8;
+				background: #2DC0B8;
+				box-shadow: none;
+				top: 2px;
+				height: 27px;
+				left: 1px;
+			}
+			.mui-switch div {
+				margin: 0 !important;
+			}
+			.mui-table-view-cell.mui-active {
+				background: #2DC0B8;
+			}
+			.mui-switch.mui-active:before {
+				padding-top: 3px;
+				content: "女";
+				color: #666
+			}
+			.mui-switch.mui-active {
+				background-color: #fff
+			}
+			.mui-switch:before {
+				padding-top: 3px;
+				content: "男";
+				color: #666
+			}
+			.mui-table-view-cell div:nth-child(1) {
+				float: left;
+				color: #fff;
+				margin-top: 4px;
+			}
+			.mui-table-view-cell div:nth-child(2) {
+				float: right;
+			}
+			.mui-table-view-cell div:nth-child(3) {
+				float: right;
+				height: auto;
+				width: auto;
+				background: none;
+				color: #FFD201;
+				margin-top: 4px;
+				margin-right: 18px;
+			}
+			.mui-table-view-cell div:nth-child(4) {
+				float: right;
+				color: #FFD201;
+				margin-top: 4px;
+				margin-left: 8px;
+			}
+			.mui-input-range input[type='range']::-webkit-slider-thumb {
+				background: #fff;
+				border: 0;
+				width: 20px;
+				height: 20px;
+			}
+			.mui-content>.mui-table-view:first-child {
+				margin-top: 0;
+			}
+			.mui-content {
+				padding: 0 10px 0 10px;
+			}
+			.ad-ms {
+				color: #fff;
+				width: 80%;
+				text-align: center;
+				margin: 0 auto;
+				margin-top: 120px;
+			}
+			.mui-bar-nav {
+				-webkit-box-shadow: none;
+				box-shadow: none;
+			}
+			.mui-bar {
+				-webkit-box-shadow: none;
+				box-shadow: none;
+			}
+			.mui-input-range input[type=range] {
+				background-color: #fff
+			}
+			.icon-left:before {
+				padding: 10px;
+			}
+			.ad-last {
+				border-bottom: 0 !important;
+			}
+			.ad-last:after {
+				background: none;
+			} 
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title ad-white" id="title">个人资料设定</h1>
+			<button class="mui-action-back icon iconfont icon-left ad-white"></button>
+			<!--			<span class="mui-action-back icon iconfont icon-left ad-white"></span>-->
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<div>体重</div>
+					<div class="mui-input-range">
+						<input id="ad-tz" type="range" value="60" min="40" max="94" />
+					</div>
+					<div>kg</div>
+					<div id='ad-tz-val'>60</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<div>生日</div>
+					<div class="mui-input-range">
+						<input id="ad-csny" type="range" value="1960" min="1950" max="2020" />
+					</div>
+					<div>年</div>
+					<div id='ad-csny-val'>1980</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<div>身高</div>
+					<div class="mui-input-range">
+						<input id="ad-sg" type="range" value="165" min="130" max="220" />
+					</div>
+					<div>cm</div>
+					<div id='ad-sg-val'>165</div>
+				</li>
+				<li class="mui-table-view-cell ad-last">
+					<div style="color: #fff;">性别</div>
+					<div id="ad-xb" class="mui-switch">
+						<div class="mui-switch-handle"></div>
+					</div>
+				</li>
+			</ul>
+			<div class='ad-ms'>
+				系统将根据您的个人资料计算食物摄入能量和体能消耗时间，为您打造一个完美的身材~~
+			</div>
+
+		</div>
+	</body>
+	<script src="common/js/mui.listpicker.js"></script>
+	<script src="common/js/mui.poppicker.js"></script>
+	<script src="common/js/mui.dtpicker.js"></script>
+	<script src="common/js/food-data.js"></script>
+	<script>
+		mui.init({
+			swipeBack: true //启用右滑关闭功能
+		});
+		(function($) {
+			if (localStorage.tz == undefined) {
+				document.getElementById('ad-tz-val').innerHTML = "60";
+				document.getElementById('ad-tz').value = "60";
+			} else {
+				document.getElementById('ad-tz-val').innerHTML = localStorage.tz;
+				document.getElementById('ad-tz').value = localStorage.tz
+			}
+			
+			if (localStorage.csny == undefined) {
+				document.getElementById('ad-csny-val').innerHTML = "1960";
+				document.getElementById('ad-csny').value = "1960";
+			} else {
+				document.getElementById('ad-csny-val').innerHTML = localStorage.csny;
+				document.getElementById('ad-csny').value = localStorage.csny
+			}
+			
+			if (localStorage.sg == undefined) {
+				document.getElementById('ad-sg-val').innerHTML = "165";
+				document.getElementById('ad-sg').value = "165";
+			} else {
+				document.getElementById('ad-sg-val').innerHTML = localStorage.sg;
+				document.getElementById('ad-sg').value = localStorage.sg
+			}
+			
+			if (localStorage.xb == undefined || localStorage.xb == 2) {
+				document.getElementById("ad-xb").classList.add("mui-active");
+			} else {
+				document.getElementById("ad-xb").classList.remove("mui-active");
+			}
+			document.getElementById('ad-xb').addEventListener('toggle', function(event) {
+				if (event.detail.isActive) {
+					localStorage.xb = 2;
+				} else {
+					localStorage.xb = 1;
+				}
+			});
+			var rangeList = document.querySelectorAll('input[type="range"]');
+			for (var i = 0, len = rangeList.length; i < len; i++) {
+				rangeList[i].addEventListener('input', function() {
+					document.getElementById(this.id + '-val').innerHTML = this.value;
+					if (this.id == 'ad-tz') {
+						localStorage.tz = this.value;
+					}else if(this.id == 'ad-csny'){
+						localStorage.csny = this.value;
+					}else if(this.id == 'ad-sg'){
+						localStorage.sg = this.value;
+					}
+				});
+			}
+		})(mui);
+	</script>
+
+</html>

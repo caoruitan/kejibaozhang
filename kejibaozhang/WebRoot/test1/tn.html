@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>体能</title>
+		<script src="common/js/mui.min.js"></script>
+		<link href="common/css/mui.css" rel="stylesheet" />
+		<link href="common/font/iconfont.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="common/css/app.css" />
+		<link href="common/css/mui.listpicker.css" rel="stylesheet" />
+		<link href="common/css/mui.poppicker.css" rel="stylesheet" />
+		<link href="common/css/mui.dtpicker.css" rel="stylesheet" />
+		<style>
+			html,
+			body {
+				height: 100%;
+			}
+			ul,
+			li {
+				list-style: none;
+			}
+			/*----------------------------------------------------*/
+			
+			.ad-topbox {
+				position: relative;
+				background: #2DC0B8;
+				height: 60%;
+				width: 100%;
+			}
+			.ad-topbox .ad-sz {
+				position: fixed;
+				right: 2px;
+				top: 5px;
+				padding: 6px;
+			}
+			.ad-topbox .ad-sz span {
+				font-size: 22px;
+				color: #fff;
+			}
+			.ad-topbox .ad-txbox {
+				height: 70px;
+				position: absolute;
+				left: 18%;
+				width: 64%;
+				bottom: -35px;
+				border-radius: 34px;
+				border: 3px solid rgba(255,255,255,0.4);
+			}
+			.ad-topbox .ad-txbox div {
+				width: 100%;
+				background: #FFD201;
+				margin: 0 auto;
+				height: 100%;
+				padding-top: 8px;
+				border-radius: 30px;
+				text-align: center;
+			}
+			.ad-topbox .ad-txbox div p {
+				padding: 0;
+				margin: 0;
+				color: #333;
+			}
+			.ad-topbox .ad-txbox div p:last-child {
+				font-size: 12px;
+			}
+			.ad-topbox .ad-left {
+				height: 70%;
+				width: 40px;
+				position:absolute;
+				bottom: 45px;
+				left: 2px;
+			}
+			.ad-topbox .ad-rigth {
+				height: 70%;
+				float: right;
+				width: 40px;
+				position:absolute;
+				bottom: 45px;
+				right: 2px;
+			}
+			.ad-topbox .ad-center {
+				padding: 40px 40px 0 40px;
+			}
+			.ad-topbox .ad-center .ad-ydbox {
+				width: 260px;
+				height: 90px;
+				margin: 0 auto;
+			}
+			.ad-topbox .ad-center .ad-ydbox .ad-yditembox {
+				width: 80px;
+				height: 80px;
+				float: left;
+				margin-left: 20px;
+				text-align: center;
+				color: #FFFFFF;
+				font-size: 14px;
+				
+			}
+			.ad-topbox .ad-center .ad-ydbox .ad-first{
+				margin-left: 0;
+			}
+			.ad-topbox .ad-center .ad-ydbox .ad-actived div:first-child {
+				background: #FFD201 !important;
+				border:2px solid rgba(80,200,200,1);
+			}
+			.ad-topbox .ad-center .ad-ydbox .ad-actived div:last-child {
+				color: #FFD201 !important;
+				margin: 6px 0 0 0 ;
+				
+			}
+			.ad-topbox .ad-center .ad-ydbox .ad-yditembox div:first-child {
+				width: 54px;
+				height: 54px;
+				line-height: 14px;
+				border-radius: 54px;
+				margin: 0 auto;
+				background: #58cdc7;
+				
+				border:2px solid rgba(80,200,200,1);
+			}
+			.ad-topbox .ad-center .ad-ydbox .ad-yditembox div:last-child {
+				margin: 6px 0 0 0 ;
+			}
+			.ad-topbox .ad-center .ad-ydbox .ad-yditembox .ad-zxc,
+			.ad-pb,
+			.ad-bx {
+				padding-top: 18px;
+			}
+			/* 分割线 start*/
+			.ad-topbox .ad-center .ad-splitbox{
+				width: 80%;
+				height: 10px;
+				margin: 0 auto;
+				margin-top: -12px;
+			}
+			.ad-topbox .ad-center .ad-splitbox .ad-split-left{
+				width: 50%;
+				float: left;
+				margin: 0 0 0 -5px;
+				height: 10px;
+				border-bottom: 1px solid rgba(255,255,255,0.3);
+			}
+			.ad-topbox .ad-center .ad-splitbox .ad-split-mid{
+				width: 10px;
+				float: left;
+				margin:  2px 0 0 -3px;
+				color: rgba(255,255,255,0.3);
+			}
+			.ad-topbox .ad-center .ad-splitbox .ad-split-right{
+				width: 50%;
+				float: right;
+				height: 10px;
+				margin: 0 -5px 0 0;
+				border-bottom: 1px solid rgba(255,255,255,0.3);
+			}
+			/* 分割线 end*/
+			.ad-topbox .ad-center .ad-jsbox {
+				height: auto;
+				margin-top: 30px;
+			}
+			.ad-topbox .ad-center .ad-showbox {
+				height: 50px;
+				width: 100%;
+				position: absolute;
+				bottom: 48px;
+				left: 0px;
+				padding: 0 34px 0 34px;
+			}
+			.ad-topbox .ad-center .ad-showleft {
+				height: auto;
+				width: 50%;
+				float: left;
+				padding-top: 8px;
+				margin-left: -4px;
+			}
+			.ad-topbox .ad-center .ad-showleft p {
+				color: #fff;
+				padding: 0;
+				margin: 0;
+			}
+			.ad-topbox .ad-center .ad-showleft p:first-child {
+				font-size: 18px;
+			}
+			.ad-topbox .ad-center .ad-showleft p:last-child {
+				margin-top: 8px;
+				width: auto;
+			}
+			.ad-topbox .ad-center .ad-showrigth {
+				height: auto;
+				width: 50%;
+				float: right;
+				padding-top: 8px;
+				text-align: right;
+				margin-right: -4px;
+			}
+			.ad-topbox .ad-center .ad-showrigth p {
+				color: #fff;
+				padding: 0;
+				margin: 0;
+			}
+			.ad-topbox .ad-center .ad-showrigth p:first-child {
+				font-size: 18px;
+			}
+			.ad-topbox .ad-center .ad-showrigth p:last-child {
+				margin-top: 8px;
+				width: auto;
+			}
+			.ad-topbox .ad-center .ad-showcenter {
+				width: 100%;
+				padding: 0 80px 0 80px;
+				height: 80px;
+			}
+			.ad-topbox .ad-center .ad-jsbox .ad-yutype {
+				border: 0;
+				height: 20px;
+				padding: 0;
+				color: #fff;
+				background: #2DC0B8;
+				font-size: 16px;
+			}
+			.ad-topbox .ad-center .ad-jsbox .ad-time {
+				border: 0;
+				height: 40px;
+				padding: 0;
+				color: #fff;
+				background: #2DC0B8;
+				font-size: 16px;
+				margin-top: 15px;
+			}
+			/*----------------------------------------------------*/
+			
+			.ad-bottombox {
+				background: #f6f6f6;
+				height: 40%;
+			}
+			.ad-bottombox .ad-addfood {
+				position: fixed;
+				bottom: 0;
+				height: 40px;
+				width: 100%;
+				text-align: center;
+				
+			}
+			.ad-bottombox .ad-addfood .ad-addfoodbutton{
+				width: 90%;
+				margin: 0 auto;
+				padding-top: 6px;
+			}
+			.ad-bottombox .ad-foodbox {
+				width: 100%;
+				margin: 0 auto;
+				overflow-y: scroll;
+				padding: 0 24px 0 24px;
+			}
+			.ad-bottombox .ad-foodbox .ad-temp {
+				width: 100px;
+				margin: 0 auto;
+				padding-top: 70px;
+				height: 120px;
+			}
+			.ad-bottombox .ad-foodbox .ad-temp span {
+				font-size: 100px;
+			}
+			.ad-bottombox .ad-fooditembox div:nth-child(1) {
+				/*食物名称 */
+				
+				float: left;
+				color: #000;
+				font-size: 16px;
+			}
+			.ad-bottombox .ad-fooditembox div:nth-child(2) {
+				/*消耗标准*/
+				
+				float: left;
+				margin-left: 4px;
+				color: #999999;
+				font-size: 14px;
+				padding-top: 2px;
+			}
+			.ad-bottombox .ad-fooditembox div:nth-child(3) {
+				/*删除*/
+				
+				float: right;
+				color: #999999;
+				font-size: 14px;
+				padding-top: 2px;
+			}
+			.ad-bottombox .ad-fooditembox div:nth-child(4) {
+				/*食物重量*/
+				
+				float: right;
+				margin-right: 20px;
+				color: #00CCCC;
+				font-size: 14px;
+				padding-top: 2px;
+			}
+			/*----------------------------------------------------*/
+			
+			.ad-white {
+				color: #fff;
+			}
+			.ad-00CCCC {
+				color: #00CCCC;
+			}
+			.ad-font50 {
+				font-size: 42px;
+			}
+			.ad-font40 {
+				font-size: 32px;
+			}
+			.ad-font18 {
+				font-size: 14px;
+			}
+			.m1 {
+				margin: 0;
+				text-align: center;
+				background: #FFFFFF;
+				background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(45, 192, 183, 1)), to(rgba(255, 255, 255, 1)));
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+			.ad-left li {
+				width: 16px;
+				border-radius: 2px;
+				height: 4px;
+				background: #4CC9C3;
+				margin-top: 4px;
+			}
+			.ad-left li.ad-hot {
+				background: #C1ECEA;
+			}
+			.ad-rigth li {
+				width: 16px;
+				border-radius: 2px;
+				height: 4px;
+				background: #4CC9C3;
+				margin-top: 4px;
+			}
+			.ad-rigth li.ad-hot {
+				background: #C1ECEA;
+			}
+			.ad-E2E2E2{
+				color: #eee;
+			}
+			/*----------------------------------------------------*/
+			
+			.mui-content {
+				height: 100%;
+				background: #F5F5F5;
+			}
+			.mui-table-view-cell {
+				height: 44px;
+				line-height: 44px;
+				box-sizing: border-box;
+				border-bottom: 1px solid #e8e8e8 !important;
+				background: #F5F5F5;
+				padding: 2px 0 2px 0;
+			}
+			.mui-table-view-cell:after{
+				background: none;
+			}
+			.mui-btn-block {
+				margin-bottom: 0;
+			}
+			.mui-poppicker-header .mui-btn{
+				font-size: 18px;
+			}
+			.mui-poppicker-btn-ok{
+				background: none;
+				color: #333;
+				border: none;
+				width: 60px;
+			}
+			.mui-poppicker-btn-cancel{
+				background: none;
+				color: #898682;
+				border: none;
+				width: 60px;
+			}
+			.mui-listpicker .mui-listpicker-rule{
+				background: #00CCCC;
+			}
+			.mui-listpicker .mui-listpicker-highlight{
+				color: #007D7E;
+				border: none;
+			}
+			.mui-table-view:after{
+				background: none;
+			}
+			.mui-poppicker-header{
+				
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<div id="ad-topbox" class="ad-topbox">
+				<div class="ad-txbox">
+					<div id="ad-tx">
+						<p id="ad-tx1">经常运动保持好心情~~</p>
+						<p id="ad-tx2">请选择运动方式和食物</p>
+					</div>
+				</div>
+				<div class="ad-sz" id="ad-sz">
+					<span class="icon iconfont icon-shezhi1 ad-white"></span>
+				</div>
+				<div class="ad-left">
+					<div id="ad-left" style="width: 20px;position: absolute;bottom: 0;left: 8px;">
+						<li id="lefthot30"></li>
+						<li id="lefthot29"></li>
+						<li id="lefthot28"></li>
+						<li id="lefthot27"></li>
+						<li id="lefthot26"></li>
+						<li id="lefthot25"></li>
+						<li id="lefthot24"></li>
+						<li id="lefthot23"></li>
+						<li id="lefthot22"></li>
+						<li id="lefthot21"></li>
+						<li id="lefthot20"></li>
+						<li id="lefthot19"></li>
+						<li id="lefthot18"></li>
+						<li id="lefthot17"></li>
+						<li id="lefthot16"></li>
+						<li id="lefthot15"></li>
+						<li id="lefthot14"></li>
+						<li id="lefthot13"></li>
+						<li id="lefthot12"></li>
+						<li id="lefthot11"></li>
+						<li id="lefthot10"></li>
+						<li id="lefthot9"></li>
+						<li id="lefthot8"></li>
+						<li id="lefthot7"></li>
+						<li id="lefthot6"></li>
+						<li id="lefthot5"></li>
+						<li id="lefthot4"></li>
+						<li id="lefthot3"></li>
+						<li id="lefthot2"></li>
+						<li id="lefthot1"></li>
+					</div>
+				</div>
+				<div class="ad-rigth">
+					<div id="ad-rigth" style="width: 20px;position: absolute;bottom: 0;right: 4px;">
+						<li id="rigthhot30"></li>
+						<li id="rigthhot29"></li>
+						<li id="rigthhot28"></li>
+						<li id="rigthhot27"></li>
+						<li id="rigthhot26"></li>
+						<li id="rigthhot25"></li>
+						<li id="rigthhot24"></li>
+						<li id="rigthhot23"></li>
+						<li id="rigthhot22"></li>
+						<li id="rigthhot21"></li>
+						<li id="rigthhot20"></li>
+						<li id="rigthhot19"></li>
+						<li id="rigthhot18"></li>
+						<li id="rigthhot17"></li>
+						<li id="rigthhot16"></li>
+						<li id="rigthhot15"></li>
+						<li id="rigthhot14"></li>
+						<li id="rigthhot13"></li>
+						<li id="rigthhot12"></li>
+						<li id="rigthhot11"></li>
+						<li id="rigthhot10"></li>
+						<li id="rigthhot9"></li>
+						<li id="rigthhot8"></li>
+						<li id="rigthhot7"></li>
+						<li id="rigthhot6"></li>
+						<li id="rigthhot5"></li>
+						<li id="rigthhot4"></li>
+						<li id="rigthhot3"></li>
+						<li id="rigthhot2"></li>
+						<li id="rigthhot1"></li>
+					</div>
+				</div>
+				<div class="ad-center">
+					<div id= "ad-ydbox" class="ad-ydbox">
+						<div class="ad-yditembox ad-first" title="ZXC">
+							<div class="ad-zxc">
+								<span class="icon iconfont icon-androidbicycle ad-font50 ad-white"></span>
+							</div>
+							<div>自行车</div>
+						</div>
+						<div class="ad-yditembox ad-actived" title="PB">
+							<div class="ad-pb">
+								<span class="icon iconfont icon-paobu ad-font40 ad-white"></span>
+							</div>
+							<div>跑步</div>
+						</div>
+						<div class="ad-yditembox" title="BX">
+							<div class="ad-bx">
+								<span class="icon iconfont icon-buxing ad-font40 ad-white"></span>
+							</div>
+							<div>步行</div>
+						</div>
+					</div>
+					<div class="ad-splitbox">
+						<div class="ad-split-left"></div>
+						<div class="ad-split-mid icon iconfont icon-xiajiantou ad-white"></div>
+						<div class="ad-split-right"></div>
+					</div>
+					<div class="ad-jsbox">
+						<button id='showPBPicker' title="0" class="ad-yutype mui-btn mui-btn-block" type='button'>慢速(80kcal/10min)</button>
+						<button id='showZXCPicker' title="0" class="ad-yutype mui-btn mui-btn-block" type='button' style="display: none;">慢速(130kcal/10min)</button>
+						<button id='showBXPicker' title="4" class="ad-yutype mui-btn mui-btn-block" type='button' style="display: none;">慢速(40kcal/10min)</button>
+						<button id='showydTime' title="" data-options='{"type":"time"}' class="ad-time btn mui-btn mui-btn-block">请选择运动的时间 </button>
+					</div>
+					<div class="ad-showbox">
+						<div class="ad-showleft">
+							<p>消耗</p>
+							<p id="ad-xhcount" title="0">0 kcal</p>
+						</div>
+						<div class="ad-showrigth">
+							<p>摄入</p>
+							<p id="ad-srcount" title="0">0 kcal</p>
+						</div>
+						<div class="ad-showcenter"></div>
+					</div>
+				</div>
+			</div>
+			<div class="ad-bottombox">
+				<div style="height: 40px;width: 100%;"></div>
+				<div id="ad-foodbox" class="ad-foodbox">
+					<div id="ad-temp" class="ad-temp">
+						<span class="icon iconfont icon-mifanxuanzhong ad-E2E2E2"></span>
+					</div>
+					<ul class="mui-table-view" id="ad-item" style="display: none;">
+					</ul>
+				</div>
+				<div class="ad-addfood">
+					<div id="ad-addfood" class="icon iconfont icon-jia ad-00CCCC ad-font18 ad-addfoodbutton"> 添加食物
+					</div>
+				</div>
+			</div>
+	</body>
+	<script src="common/js/mui.listpicker.js"></script>
+	<script src="common/js/mui.poppicker.js"></script>
+	<script src="common/js/mui.dtpicker.js"></script>
+	<script src="common/js/food-data.js"></script>
+	<script>
+		mui.plusReady(function() {
+			//仅支持竖屏显示
+			plus.screen.lockOrientation("portrait-primary");
+		});
+		var ydflg = "PB";
+		var showPBPickerButton;
+		var showZXCPickerButton;
+		var showBXPickerButton;
+		var showSJPickerButton;
+		(function($, doc) {
+			$.ready(function() {
+				///////////////////////////////////////////////////////////跑步
+				var pbPicker = new $.PopPicker();
+				pbPicker.setData([{
+					value: '0', //km/h
+					text: '慢速(80kcal/10min)'
+				}, {
+					value: '1',
+					text: '常速(90kcal/10min)'
+				}, {
+					value: '2',
+					text: '快速(100kcal/10min)'
+				}]);
+				showPBPickerButton = doc.getElementById('showPBPicker');
+				showPBPickerButton.addEventListener('tap', function(event) {
+					pbPicker.show(function(items) {
+						showPBPickerButton.innerText = items[0].text;
+						showPBPickerButton.title = items[0].value;
+						if (showSJPickerButton.title != "") {
+							getXHcount();
+							compareSize();
+						}
+					});
+				}, false);
+				/////////////////////////////////////////////////////////////自行车
+				var zxcPicker = new $.PopPicker();
+				zxcPicker.setData([{
+					value: '0', //km/h
+					text: '慢速(130kcal/10min)'
+				}, {
+					value: '1',
+					text: '常速(150kcal/10min)'
+				}, {
+					value: '2',
+					text: '快速(180kcal/10min)'
+				}, {
+					value: '3',
+					text: '急速(210kcal/10min)'
+				}]);
+				showZXCPickerButton = doc.getElementById('showZXCPicker');
+				showZXCPickerButton.addEventListener('tap', function(event) {
+					zxcPicker.show(function(items) {
+						showZXCPickerButton.innerText = items[0].text;
+						showZXCPickerButton.title = items[0].value;
+						if (showSJPickerButton.title != "") {
+							getXHcount();
+							compareSize();
+						}
+					});
+				}, false);
+				/////////////////////////////////////////////////////////////步行
+				var bxPicker = new $.PopPicker();
+				bxPicker.setData([{
+					value: '4', //km/h
+					text: '慢速(40kcal/10min)'
+				}, {
+					value: '5',
+					text: '常速(50kcal/10min)'
+				}, {
+					value: '5',
+					text: '快速(60kcal/10min)'
+				}]);
+				showBXPickerButton = doc.getElementById('showBXPicker');
+				showBXPickerButton.addEventListener('tap', function(event) {
+					bxPicker.show(function(items) {
+						showBXPickerButton.innerText = items[0].text;
+						showBXPickerButton.title = items[0].value;
+						if (showSJPickerButton.title != "") {
+							getXHcount();
+							compareSize();
+						}
+					});
+				}, false);
+				/////////////////////////////////////////////////////////////时间
+				var sjPicker = new $.PopPicker();
+				sjPicker.setData([{
+					value: '10', //min
+					text: '10分钟'
+				},{
+					value: '20', //min
+					text: '20分钟'
+				},{
+					value: '30', //min
+					text: '30分钟'
+				},{
+					value: '40', //min
+					text: '40分钟'
+				},{
+					value: '50', //min
+					text: '50分钟'
+				},{
+					value: '60', //min
+					text: '60分钟'
+				},{
+					value: '70', //min
+					text: '70分钟'
+				},{
+					value: '80', //min
+					text: '80分钟'
+				},{
+					value: '90', //min
+					text: '90分钟'
+				},{
+					value: '100', //min
+					text: '100分钟'
+				}, {
+					value: '110',
+					text: '110分钟'
+				}, {
+					value: '120',
+					text: '120分钟'
+				}]);
+				showSJPickerButton = doc.getElementById('showydTime');
+				showSJPickerButton.addEventListener('tap', function(event) {
+					sjPicker.show(function(items) {
+						showSJPickerButton.innerText = items[0].text;
+						showSJPickerButton.title = items[0].value;
+						getXHcount();
+						compareSize();
+					});
+				}, false);
+				/////////////////////////////////////////////////////////////食物				
+				var swPicker = new $.PopPicker({
+					layer: 3
+				});
+				swPicker.setData(fooddata);
+				var showSWPickerButton = doc.getElementById('ad-addfood');
+				var foodul = document.getElementById('ad-item');
+				var li;
+				var div;
+				showSWPickerButton.addEventListener('tap', function(event) {
+					swPicker.show(function(items) {
+						document.getElementById('ad-temp').style.display = 'none';
+						document.getElementById('ad-item').style.display = 'block';
+						var addflg = false;
+						mui(".mui-table-view-cell").each(function() {
+							if (this.id == items[1].value) {
+								addflg = true;
+							}
+						});
+						if (!addflg) {
+							li = document.createElement('li');
+							li.className = "mui-table-view-cell";
+							li.id = items[1].value;
+							div = document.createElement('div');
+							div.className = "ad-fooditembox";
+							var temp1div = document.createElement('div');
+							temp1div.innerHTML = items[1].text;
+							var temp2div = document.createElement('div');
+							temp2div.innerHTML = items[1].title;
+							var temp3div = document.createElement('div');
+							temp3div.innerHTML = "<span class='icon iconfont icon-shanchu1'></span>";
+							temp3div.addEventListener('tap', function() {
+								var li = this.parentNode.parentNode;
+								li.parentNode.removeChild(li);
+								if (!mui('.mui-table-view-cell').length) {
+									document.getElementById('ad-temp').style.display = 'block';
+									document.getElementById('ad-item').style.display = 'none';
+								}
+								// 计算摄入
+								getSRCount();
+								// 比大小
+								compareSize();
+							});
+							var temp4div = document.createElement('div');
+							temp4div.id = "count" + items[1].value;
+							temp4div.title = items[1].id;
+							temp4div.innerHTML = items[2].text;
+							div.appendChild(temp1div);
+							div.appendChild(temp2div);
+							div.appendChild(temp3div);
+							div.appendChild(temp4div);
+							li.appendChild(div);
+							foodul.appendChild(li);
+						} else {
+							var oldcount = document.getElementById("count" + items[1].value).innerHTML.replace('g', '');
+							var newcount = parseInt(oldcount) + parseInt(items[2].text.replace('g', ''));
+							document.getElementById("count" + items[1].value).innerHTML = newcount + "g";
+						}
+						// 计算摄入
+						getSRCount();
+						// 比大小
+						compareSize();
+					});
+				}, false);
+			});
+		})(mui, document);
+		(function($) {
+			var tempwidth =parseInt((document.documentElement.clientWidth-80)/3 -28);
+			mui('.ad-yditembox').each(function(){
+				this.style.height = tempwidth + "px";
+				this.style.width = tempwidth + "px";
+			});
+			document.getElementById("ad-ydbox").style.width = parseInt(tempwidth * 3 + 45) + "px";
+			
+			var tempHeigth = document.documentElement.clientHeight * 0.6;
+			document.getElementById("ad-foodbox").style.maxHeight = (document.documentElement.clientHeight - tempHeigth - 30 - 40 - 10) + "px";
+			mui('.ad-ydbox').on('tap', '.ad-yditembox', function() {
+				mui('.ad-yditembox').each(function() {
+					this.classList.remove('ad-actived');
+				});
+				mui('.ad-yutype').each(function() {
+					this.style.display = "none";
+				});
+				ydflg = this.title;
+				document.getElementById("show" + this.title + "Picker").style.display = "block";
+				this.classList.add('ad-actived');
+				showSJPickerButton.innerHTML = "请选择运动的时间";
+				showSJPickerButton.title = "";
+				document.getElementById("ad-xhcount").innerHTML = "0 kcal";
+				document.getElementById("ad-xhcount").title = "0";
+				mui('.ad-left .ad-hot').each(function() {
+					this.classList.remove("ad-hot");
+				});
+			});
+			document.getElementById('ad-sz').addEventListener('tap', function() {
+				mui.openWindow({
+					id: "sz",
+					url: "sz.html",
+					waiting: {
+						autoShow: false
+					},
+					extras: {
+						tz: ''
+					}
+				});
+			});
+		})(mui)
+
+		function getXHcount() {
+			var tz;
+			if(localStorage.tz == undefined){
+				tz = 60;
+			}else{
+				tz = localStorage.tz;
+			}
+			var xb;
+			if(localStorage.xb == undefined){
+				xb = 2;
+			}else{
+				xb = localStorage.xb;
+			}
+			var xh;
+			var tzflg;
+			var licount;
+			for (var i = 0; i < tzList.length; i++) {
+				if (parseInt(tzList[i].split('-')[0]) <= parseInt(tz) && parseInt(tzList[i].split('-')[1]) >= parseInt(tz)) {
+					tzflg = i;
+					continue;
+				}
+			}
+			if (ydflg == 'BX') {
+				//[ -3.96 + 1.128 * 速度 + 0.057 * 体重  -  0.307 * 性别] * 运动时间
+				xh = (-3.96 + 1.128 * parseInt(showBXPickerButton.title) + 0.057 * parseInt(tz) - 0.307 * parseInt(xb)) * parseInt(showSJPickerButton.title);
+				xh = get4s5r(xh)
+			} else if (ydflg == 'PB') {
+				xh = parseInt(pbxhList[tzflg][showPBPickerButton.title]) * parseInt(showSJPickerButton.title);
+			} else {
+				xh = parseInt(zxcList[tzflg][showZXCPickerButton.title]) * parseInt(showSJPickerButton.title);
+			}
+			document.getElementById("ad-xhcount").innerHTML = xh + " kcal";
+			document.getElementById("ad-xhcount").title = xh;
+			licount = xh / 150;
+			if (licount > 30) {
+				licount = 30;
+			}
+			mui('.ad-left .ad-hot').each(function() {
+				this.classList.remove("ad-hot");
+			});
+			for (var i = 0; i < licount; i++) {
+				document.getElementById('lefthot' + (i + 1)).classList.add("ad-hot")
+			}
+		};
+
+		function getSRCount() {
+			var sr = 0;
+			mui('.mui-table-view-cell').each(function() {
+				sr = sr + parseInt(document.getElementById("count" + this.id).innerHTML.replace('g', '')) * parseInt(document.getElementById("count" + this.id).title) / 100;
+			});
+			document.getElementById('ad-srcount').innerHTML = sr + " kcal";
+			document.getElementById("ad-srcount").title = sr;
+			var licount = sr / 150;
+			if (licount > 30) {
+				licount = 30;
+			}
+			mui('.ad-rigth .ad-hot').each(function() {
+				this.classList.remove("ad-hot");
+			});
+			for (var i = 0; i < licount; i++) {
+				document.getElementById('rigthhot' + (i + 1)).classList.add("ad-hot")
+			}
+		};
+
+		function compareSize() {
+			var xh = parseInt(document.getElementById("ad-xhcount").title);
+			var sr = parseInt(document.getElementById("ad-srcount").title);
+
+			if (xh > sr) {
+				document.getElementById('ad-tx1').innerHTML = '消耗能量 > 摄入能量';
+				document.getElementById('ad-tx2').innerHTML = '吃饱了才有劲减肥哦~~';
+			} else if (xh < sr) {
+				document.getElementById('ad-tx1').innerHTML = '消耗能量 < 摄入能量';
+				document.getElementById('ad-tx2').innerHTML = '要多锻炼,听听脂肪燃烧的声音吧~~';
+			} else {
+				document.getElementById('ad-tx1').innerHTML = '消耗能量 = 摄入能量';
+				document.getElementById('ad-tx2').innerHTML = '刚刚好,身材杠杠滴~~';
+			}
+		};
+		
+		function get4s5r(num){
+			num = num + 0.5;
+			num = num.toString();
+			return num.split('.')[0];
+		}
+	</script>
+
+</html>

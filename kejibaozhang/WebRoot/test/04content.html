@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1, user-scalable=false">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-touch-fullscreen" content="yes">
+		<meta name="format-detection" content="telephone=no" />
+		<link href="css/base.css" rel="stylesheet" type="text/css" />
+		<link href="css/mobile.css" rel="stylesheet" type="text/css" />
+		<title>详情页</title>
+		<script>
+			window.onload=function(){
+				var popbox=document.querySelector(".m-pop"),
+				    detail=document.querySelector(".m-detail"),	
+				    cover=document.querySelector(".m-cover"),
+				    headerIcon=document.querySelector(".header_icon"),
+				    flag=true;
+				cover.addEventListener("click",closePop,false); //点击遮罩层关闭弹出框  
+				headerIcon.addEventListener("click",function(){ //点击头部右侧图标
+				   if(flag){
+						openPop();
+						window.scroll(0,0);
+						flag=false;
+				   }else{ 
+					   closePop();
+					   flag=true;
+				  }
+				},false);
+				function stopParat(e){//阻止默认事件
+					 e.preventDefault(); 
+				}
+				function closePop(){//关闭弹出框
+					popbox.style.right="-75%";
+					detail.style.position="static";
+					popbox.style.display="none";		
+					cover.style.display="none";	
+					cover.removeEventListener("touchmove",stopParat,false);
+					detail.removeEventListener("touchmove",stopParat,false); 
+				}
+				function openPop(){//打开弹出框
+					popbox.style.right="0";
+					detail.style.position="fixed";
+					popbox.style.display="block";		
+					cover.style.display="block";
+					detail.addEventListener("touchmove",stopParat,false);
+					cover.addEventListener("touchmove",stopParat,false);  	
+				}	
+			}
+		</script>
+	</head>
+
+	<body>
+		<!-- A 头部 -->
+		<div class="header">
+			<div class="fix_header">
+				<div class="header_shoot_hand">
+					<div class="header_box">
+						<div class="header_left">
+							<a class="but_l_arrow" href="03channel.html"></a>
+							<div class="header_con">体能训练手册</div>
+							<a class="header_icon" href="javascript:void(0);"></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- B 详情 -->
+		<div class="m-detail">
+			<h2>体能训练目标心率计算方法</h2>
+			<p>美国海军特战司令部，1987年成立于加利福尼亚州科罗拉多的海军两栖作战基地，其任务是组织、训练、选拔海军的特战队员并对其进行装备、培训，负责在全球进行部署、完成特种作战</p>
+			<p>美国海豹突击队，隶属于美国海军，世界上最为神秘、最具震慑力的特种部队之一，其队员拥有惊为天人的体能水平和无与伦比的身体气</p>
+		<p>美国海军特战司令部，1987年成立于加利福尼亚州科罗拉多的海军两栖作战基地，其任务是组织、训练、选拔海军的特战队员并对其进行装备、培训，负责在全球进行部署、完成特种作战</p>
+			<p>美国海豹突击队，隶属于美国海军，世界上最为神秘、最具震慑力的特种部队之一，其队员拥有惊为天人的体能水平和无与伦比的身体气</p>
+		<p>美国海军特战司令部，1987年成立于加利福尼亚州科罗拉多的海军两栖作战基地，其任务是组织、训练、选拔海军的特战队员并对其进行装备、培训，负责在全球进行部署、完成特种作战</p>
+			<p>美国海豹突击队，隶属于美国海军，世界上最为神秘、最具震慑力的特种部队之一，其队员拥有惊为天人的体能水平和无与伦比的身体气</p>
+		</div>
+		<!-- C 弹出框 -->
+		<div class="m-pop">
+			<div class="pop_con">
+				<h2>目录</h2>
+				<ul>
+					<li><a href="javascript:void(0);">第一章体能训练导论</a></li>
+					<li><a href="javascript:void(0);">第一节运动生理学概述／002</a></li>
+					<li><a href="javascript:void(0);">1.基本概念和术语／002 </a></li>
+					<li><a href="javascript:void(0);">第二节肌肉组织与功能／005 </a></li>
+					<li><a href="javascript:void(0);">1.Ⅰ类骨骼肌纤维／006 </a></li>
+					<li><a href="javascript:void(0);">2.Ⅱ类骨骼肌纤维／006 </a></li>
+					<li><a href="javascript:void(0);">3.骨骼肌纤维分布／007 </a></li>
+					<li><a href="javascript:void(0);">第三节体能训练原则／008 </a></li>
+					<li><a href="javascript:void(0);">1.适宜负荷原则／008 </a></li>
+					<li><a href="javascript:void(0);">2.基本概述与术语</a></li>
+					<li><a href="javascript:void(0);">2.专项训练原则／009 </a></li>
+					<li><a href="javascript:void(0);">2.基本概述与术语</a></li>
+					<li><a href="javascript:void(0);">3.区别对待原则／009 </a></li>
+					<li><a href="javascript:void(0);">4.停训与体能下降原则／009 </a></li>
+					<li><a href="javascript:void(0);">第四节如何测定训练心率／010 </a></li>
+					<li><a href="javascript:void(0);">体能训练目标心率计算方法／010 </a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- D 遮罩层 -->
+		<div class="m-cover"></div>
+	</body>
+
+</html>
